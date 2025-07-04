@@ -1,0 +1,14 @@
+digraph "Oracle → ODI → Snowflake → dbt → Power BI" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="Oracle → ODI → Snowflake → dbt → Power BI" nodesep=0.60 pad=2.0 rankdir=LR ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	a7d835906af4454985648230d5d9edf8 [label="Oracle EBS" height=1.9 image="C:\Users\jason_puxjygl\AppData\Local\Programs\Python\Python310\lib\site-packages\resources/onprem/database\oracle.png" shape=none]
+	"57f104c9458849e18732e35d35347a3c" [label="Oracle ODI" height=1.9 image="C:\Users\jason_puxjygl\AppData\Local\Programs\Python\Python310\lib\site-packages\resources/onprem/compute\server.png" shape=none]
+	a595b69b520d430294e151f89f112083 [label=Snowflake height=1.9 image="C:\Users\jason_puxjygl\AppData\Local\Programs\Python\Python310\lib\site-packages\resources/saas/analytics\snowflake.png" shape=none]
+	"902d5f3499114bd189ae75c8c17ed89f" [label=dbt height=1.9 image="C:\Users\jason_puxjygl\AppData\Local\Programs\Python\Python310\lib\site-packages\resources/onprem/analytics\spark.png" shape=none]
+	b763cecc740f4ff0b081d3c89436f75a [label="Power BI" height=1.9 image="C:\Users\jason_puxjygl\AppData\Local\Programs\Python\Python310\lib\site-packages\resources/onprem/analytics\powerbi.png" shape=none]
+	a7d835906af4454985648230d5d9edf8 -> "57f104c9458849e18732e35d35347a3c" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"57f104c9458849e18732e35d35347a3c" -> a595b69b520d430294e151f89f112083 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	a595b69b520d430294e151f89f112083 -> "902d5f3499114bd189ae75c8c17ed89f" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"902d5f3499114bd189ae75c8c17ed89f" -> b763cecc740f4ff0b081d3c89436f75a [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+}
