@@ -1,0 +1,138 @@
+version: 2
+
+models:
+  - name: stg_ar_cash_receipts_all
+    description: "One-to-one staging of AR cash receipts data."
+    columns:
+      - name: cash_receipt_id
+        description: "Unique identifier for each cash receipt."
+      - name: amount
+        description: "Payment amount received."
+      - name: receipt_date
+        description: "Date when the cash receipt was recorded."
+      # add other key column descriptions as needed
+
+  - name: stg_ar_payment_schedules_all
+    description: "Staging of payment schedule records."
+    columns:
+      - name: payment_schedule_id
+        description: "Primary key for payment schedule entries."
+      - name: due_date
+        description: "Scheduled due date for payment."
+      - name: amount_due_remaining
+        description: "Remaining amount to be paid."
+
+  - name: stg_ar_receivable_applications_all
+    description: "Staging of applications applied to receivables."
+    columns:
+      - name: receivable_application_id
+        description: "Identifier for receivable application."
+      - name: amount_applied
+        description: "Amount applied in the transaction."
+      - name: apply_date
+        description: "Date the receivable was applied."
+
+  - name: stg_hz_cust_accounts
+    description: "Customer account master records."
+    columns:
+      - name: cust_account_id
+        description: "Primary key for customer account."
+      - name: account_number
+        description: "Customer's account number."
+      - name: status
+        description: "Account status (e.g., Active, Inactive)."
+
+  - name: stg_hz_cust_acct_sites_all
+    description: "Customer account site details."
+    columns:
+      - name: cust_acct_site_id
+        description: "Primary key for customer account site."
+      - name: cust_account_id
+        description: "Foreign key to customer account."
+      - name: bill_to_flag
+        description: "Flag indicating billing site."
+
+  - name: stg_hz_locations
+    description: "Location/address records."
+    columns:
+      - name: location_id
+        description: "Unique key for each location."
+      - name: country
+        description: "Country of the location."
+      - name: city
+        description: "City for the location."
+
+  - name: stg_ra_contacts
+    description: "Receivables contacts staging model."
+    columns:
+      - name: contact_id
+        description: "Primary key for contact entry."
+      - name: first_name
+        description: "Contact first name."
+      - name: last_name
+        description: "Contact last name."
+
+  - name: stg_ra_customer_trx_all
+    description: "Customer transaction headers."
+    columns:
+      - name: customer_trx_id
+        description: "Transaction header identifier."
+      - name: trx_number
+        description: "Transaction number."
+      - name: trx_date
+        description: "Date of the transaction."
+
+  - name: stg_ra_customer_trx_lines_all
+    description: "Customer transaction line items."
+    columns:
+      - name: customer_trx_line_id
+        description: "Primary key for transaction line."
+      - name: line_number
+        description: "Sequence number of the line item."
+      - name: unit_selling_price
+        description: "Selling price per unit."
+  - name: stg_hz_parties
+    description: "Party-level (global) customer info: name, type, location, contact"
+    columns:
+      - name: party_id
+        description: "Primary key for the party"
+      - name: party_name
+        description: "Name of the party (organization or individual)"
+      - name: party_type
+        description: "Type of party (e.g., Organization, Person)"
+      - name: country
+        description: "Country of the party"
+      - name: email_address
+        description: "Contact email"
+  - name: stg_hz_party_sites
+    description: "Staging of party-to-site link info, including location and activity dates"
+    columns:
+      - name: party_site_id
+        description: "Primary key for party-site record"
+      - name: party_id
+        description: "Links to HZ_PARTIES"
+      - name: location_id
+        description: "Links to HZ_LOCATIONS"
+      - name: start_date_active
+        description: "Date this site became active"
+      - name: end_date_active
+        description: "Date this site was deactivated or expired"
+  - name: stg_hz_party_site_uses
+    description: "Staging of party-site uses, defining business roles like Bill‑To or Ship‑To."
+    columns:
+      - name: party_site_use_id
+        description: "Primary key for the party site use record."
+      - name: begin_date
+        description: "Date when this site use becomes valid."
+      - name: end_date
+        description: "Date when this site use becomes inactive."
+      - name: party_site_id
+        description: "Reference to the party site."
+      - name: site_use_type
+        description: "Type of use (e.g., BILL_TO, SHIP_TO)."
+      - name: primary_flag
+        description: "Indicates if this is the primary use type."
+      - name: status
+        description: "Active/inactive status of the site use."
+
+

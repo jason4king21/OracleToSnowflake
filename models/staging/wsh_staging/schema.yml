@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_wsh_delivery_details
+    description: "Delivery detail staging for warehouse shipping."
+    columns:
+      - name: delivery_detail_id
+        description: "Primary key for delivery line detail."
+      - name: source_header_id
+        description: "Original source order header ID."
+      - name: inventory_item_id
+        description: "Item being delivered."
+
+  - name: stg_wsh_picking_batches
+    description: "Picking batch grouping for shipment preparation."
+    columns:
+      - name: batch_id
+        description: "Primary key for picking batch."
+      - name: name
+        description: "Batch name or identifier."
+      - name: shipment_priority_code
+        description: "Priority code for shipment."
+
