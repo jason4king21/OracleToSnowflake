@@ -87,10 +87,10 @@ This pipeline was designed to meet core enterprise analytics needs through a com
 
 ---
 
-### 8. 🔌 ETL Compatibility & API Access
+### 8. 🔌 ETL Compatibility 
 - **ODI** integrates natively with Oracle EBS and Snowflake.
 - **dbt** executes SQL models directly in Snowflake.
-- **Power BI** refreshes data via the REST API.
+
 
 ---
 
@@ -103,8 +103,6 @@ This pipeline was designed to meet core enterprise analytics needs through a com
   - Usage and error tracking
 - **dbt**:  
   - Run logs for every job
-- **Power BI**:  
-  - API provides refresh result metadata
 
 ---
 
