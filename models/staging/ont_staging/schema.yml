@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: stg_oe_order_headers_all
+    description: "Order header staging model."
+    columns:
+      - name: header_id
+        description: "Primary key for order header."
+      - name: order_number
+        description: "Order identifier number."
+      - name: ordered_at
+        description: "Timestamp of order creation."
+
+  - name: stg_oe_order_holds_all
+    description: "Order hold/stops staging."
+    columns:
+      - name: order_hold_id
+        description: "Primary key for order hold."
+      - name: header_id
+        description: "Associated order header reference."
+      - name: released_flag
+        description: "Flag indicating whether hold is released."
+
+  - name: stg_oe_order_lines_all
+    description: "Order line item staging."
+    columns:
+      - name: line_id
+        description: "Primary key for order line."
+      - name: header_id
+        description: "Associated order header."
+      - name: ordered_item
+        description: "Identifier of the ordered item."
+
+  - name: stg_oe_order_price_attribs
+    description: "Price attributes for order lines."
+    columns:
+      - name: order_price_attrib_id
+        description: "Identifier for price attribute."
+      - name: pricing_context
+        description: "Context for pricing rules."
+      - name: flex_title
+        description: "Label or title of flexible attribute."
+
+  - name: stg_oe_price_adjustments
+    description: "Price adjustment staging model."
+    columns:
+      - name: price_adjustment_id
+        description: "Primary key for price adjustment entry."
+      - name: header_id
+        description: "Related order header."
+      - name: adjusted_amount
+        description: "Amount adjusted for price."
+

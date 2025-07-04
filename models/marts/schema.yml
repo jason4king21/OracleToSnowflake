@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: fct_customer
+    description: "Customer-level fact table aggregating transactions and orders metrics."
+    columns:
+      - name: customer_id
+        description: "Customer identifier from accounts or sales transactions."
+      - name: account_number
+        description: "Account reference from customer master data."
+      - name: status
+        description: "Current status of the customer account."
+      - name: num_trx
+        description: "Total number of receivables transactions."
+      - name: total_revenue
+        description: "Sum of amounts from receivables transactions."
+      - name: last_trx_date
+        description: "Date of the most recent transaction."
+      - name: num_orders
+        description: "Total number of orders placed."
+      - name: last_order_date
+        description: "Timestamp of the latest order."
+
+  - name: fct_order
+    description: "Order-level fact including detail metrics, adjustments, and hold status."
+    columns:
+      - name: header_id
+        description: "Primary key linking to the order header."
+      - name: order_number
+        description: "User-friendly order reference number."
+      - name: ordered_at
+        description: "Timestamp of when the order was placed."
+      - name: customer_id
+        description: "Identifier of the customer who placed the order."
+      - name: price_list_id
+        description: "Reference to pricing list used."
+      - name: num_lines
+        description: "Total count of lines in this order."
+      - name: gross_amount
+        description: "Sum of line extended amounts before adjustments."
+      - name: total_adjustments
+        description: "Total amount changed by price adjustments."
+      - name: net_amount
+        description: "Final order amount after adjustments."
+      - name: open_holds
+        description: "Number of order holds still active."
+
+  - name: fct_order_line
+    description: "Line-level fact providing detailed metrics per order line."
+    columns:
+      - name: line_id
+        description: "Unique line identifier."
+      - name: header_id
+        description: "Identifier of parent order header."
+      - name: order_number
+        description: "Order number from the header."
+      - name: ordered_item
+        description: "Identifier of the item on this line."
+      - name: ordered_quantity
+        description: "Quantity ordered."
+      - name: unit_selling_price
+        description: "Price per unit sold."
+      - name: ordered_at
+        description: "Timestamp when the order line was created."
+      - name: scheduled_ship
+        description: "Scheduled ship date for the line."
+      - name: shipped_at
+        description: "Actual shipment date."
+      - name: fulfilled_flag
+        description: "Flag indicating whether line has been fulfilled."
+
+  - name: fct_delivery_detail
+    description: "Delivery-level fact combining warehouse shipment details with orders."
+    columns:
+      - name: delivery_detail_id
+        description: "Primary key for delivery detail entry."
+      - name: header_id
+        description: "Corresponding order header ID."
+      - name: order_number
+        description: "Reference order number for this delivery."
+      - name: inventory_item_id
+        description: "Item being delivered."
+      - name: requested_quantity
+        description: "Quantity specified in the delivery request."
+      - name: shipped_quantity
+        description: "Quantity that was shipped."
+      - name: date_requested
+        description: "Date when delivery was requested."
+      - name: date_scheduled
+        description: "Scheduled delivery date."

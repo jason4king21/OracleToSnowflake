@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: ar_raw
+    schema: AR_RAW
+    tables:
+      - name: raw_ar_cash_receipts_all
+      - name: raw_ar_payment_schedules_all
+      - name: raw_ar_receivable_applications_all
+      - name: raw_hz_cust_accounts
+      - name: raw_hz_cust_acct_sites_all
+      - name: raw_hz_locations
+      - name: raw_ra_contacts
+      - name: raw_ra_customer_trx_all
+      - name: raw_ra_customer_trx_lines_all
+      - name: raw_hz_parties
+      - name: raw_hz_party_sites
+      - name: raw_hz_party_site_uses
+
+  - name: ont_raw
+    schema: ONT_RAW
+    tables:
+      - name: raw_oe_order_headers_all
+      - name: raw_oe_order_holds_all
+      - name: raw_oe_order_lines_all
+      - name: raw_oe_order_price_attribs
+      - name: raw_oe_price_adjustments
+
+  - name: wsh_raw
+    schema: WSH_RAW
+    tables:
+      - name: raw_wsh_delivery_details
+      - name: raw_wsh_picking_batches
