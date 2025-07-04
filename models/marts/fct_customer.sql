@@ -39,20 +39,13 @@ cust as (
     account_number,
     status
   from {{ ref('stg_hz_cust_accounts') }}
-),
-
-custname as (
-  select
-    party_id as customer_id,
-    party_name as customer_name    
-  from {{ ref('stg_hz_parties') }}
 )
+
 
 
 select
   c.customer_id,
   c.account_number,
-  custname.customer_name,
   c.status,
   count(distinct trx_head.customer_trx_id) as num_trx,
   sum(payment_sched.total_amount_due)      as total_amount_due,
@@ -68,6 +61,4 @@ left join payment_sched
   on payment_sched.customer_trx_id = trx_head.customer_trx_id
 left join orders
   on orders.customer_id = c.customer_id
-left join custname  
-  on custname.customer_id = c.customer_id
-group by 1,2,3,4
+group by 1,2,3
