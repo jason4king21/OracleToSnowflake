@@ -21,7 +21,7 @@
 ---
 
 ## 🧩 Architecture Overview
-![Oracle EBS to Power BI](diagrams/architecture.png)
+![Oracle EBS to Power BI](architecture.png)
 
 ## 🤔 Why This Setup
 
